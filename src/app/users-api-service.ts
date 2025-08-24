@@ -8,12 +8,12 @@ import { User } from './users-list/models/user';
 })
 export class UsersApiService {
   
-  public url = 'https://teletype.in/@ilnur_ryazhapov/mentoring-starter-task#CyNp'
-  subscribe: any;
+  private readonly url = 'https://teletype.in/@ilnur_ryazhapov/mentoring-starter-task#CyNp'
+
   
   constructor(private http : HttpClient){}
  
-  getUsers(users?: User[]):Observable<User[]> {
+  getUsers():Observable<User[]> {
    return this.http.get<User[]>(this.url)
   }
 }
