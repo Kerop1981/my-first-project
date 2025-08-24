@@ -9,10 +9,11 @@ import { User } from './users-list/models/user';
 export class UsersApiService {
   
   public url = 'https://teletype.in/@ilnur_ryazhapov/mentoring-starter-task#CyNp'
+  subscribe: any;
   
   constructor(private http : HttpClient){}
  
-  getUsers():Observable<User[]> {
+  getUsers(users?: User[]):Observable<User[]> {
    return this.http.get<User[]>(this.url)
   }
 }
