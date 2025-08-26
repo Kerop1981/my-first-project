@@ -8,7 +8,7 @@ import { User } from './users-list/models/user';
 })
 export class UsersApiService {
   
-  private readonly url = 'https://teletype.in/@ilnur_ryazhapov/mentoring-starter-task#CyNp'
+  private readonly url = ' https://jsonplaceholder.typicode.com/users'
 
   
   constructor(private http : HttpClient){}

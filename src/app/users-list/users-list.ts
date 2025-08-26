@@ -20,10 +20,7 @@ export class UsersList implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.userapiservice.getUsers().subscribe((users : User[]) => {
-      this.usersservice.setUser(users)
-    })
-  }
-
+   this.usersservice.setUser()
+}
 
 }

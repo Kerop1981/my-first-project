@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../users-list/models/user';
 import { CommonModule } from '@angular/common';
 
