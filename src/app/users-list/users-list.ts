@@ -20,7 +20,7 @@ export class UsersList implements OnInit {
   ){}
 
   ngOnInit(): void {
-   this.usersservice.setUser()
+   this.usersservice.editUser()
 }
 
 }
