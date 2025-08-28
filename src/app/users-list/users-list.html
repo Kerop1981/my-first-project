@@ -1,6 +1,6 @@
-@for (user of users; track user.id) {
+@for (user of users(); track user.id) {
   <user-card 
-    [users]="users"
+    [user]="user"
   ></user-card>
 }
 

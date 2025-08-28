@@ -1,6 +1,5 @@
-@for (user of users; track user.id) {
-    <h2>id: {{user.id}}</h2>
-    <h2>name: {{user.name}}</h2>
-    <h2>email: {{user.email}}</h2>
-    <h2>phone: {{user.Phone}}</h2>
-}
+<h2>id: {{ user()?.id }}</h2>
+<h2>name: {{ user()?.name }}</h2>
+<h2>email: {{ user()?.email }}</h2>
+<h2>phone: {{ user()?.Phone }}</h2>
+

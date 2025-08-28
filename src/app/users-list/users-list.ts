@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../users-service';
+import { Component, inject, OnInit } from '@angular/core';
+import { СamelCase } from '../camel-case';
 import { UserCard } from "../user-card/user-card";
-import { UsersApiService } from '../users-api-service';
 import { User } from './models/user';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-users-list',
@@ -12,15 +13,13 @@ import { User } from './models/user';
   styleUrl: './users-list.css'
 })
 export class UsersList implements OnInit {
-  users!: User[];
+  private users = new BehaviorSubject<User[]> ([])
+  private CamelCase =  inject(СamelCase)
 
-  constructor(
-    private usersservice : UsersService,
-    private userapiservice: UsersApiService,
-  ){}
+ 
 
   ngOnInit(): void {
-   this.usersservice.editUser()
-}
+    this.CamelCase.setUser();
+  }
 
 }

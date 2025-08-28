@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,  signal } from '@angular/core';
 import { User } from './users-list/models/user';
 import { Observable } from 'rxjs';
 import { UsersApiService } from './users-api-service';
@@ -6,12 +6,18 @@ import { UsersApiService } from './users-api-service';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class СamelCase {
+   users = signal<User[]>([])
+  
   constructor(private userapiservice:UsersApiService){}
 
-  editUser(): Observable<User[]> {
-    return this.userapiservice.getUsers();
+  setUser(): void {
+     this.userapiservice.getUsers().subscribe(users => {
+      this.users.set(users)
+     });
   }
-
+  
  
 }
+
+

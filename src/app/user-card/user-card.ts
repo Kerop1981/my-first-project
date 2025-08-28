@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { User } from '../users-list/models/user';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './user-card.css'
 })
 export class UserCard {
-  @Input()  users!: User[];
+  user = input<User>();
 
  
 }
