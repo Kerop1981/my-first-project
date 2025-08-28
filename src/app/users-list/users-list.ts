@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { СamelCase } from '../camel-case';
 import { UserCard } from "../user-card/user-card";
 import { User } from './models/user';
-import { BehaviorSubject } from 'rxjs';
+
 
 
 @Component({
@@ -13,13 +13,11 @@ import { BehaviorSubject } from 'rxjs';
   styleUrl: './users-list.css'
 })
 export class UsersList implements OnInit {
-  private users = new BehaviorSubject<User[]> ([])
-  private CamelCase =  inject(СamelCase)
+ users = signal<User[]>
 
- 
+  constructor(private camelCase: СamelCase) {}
 
   ngOnInit(): void {
-    this.CamelCase.setUser();
+    this.camelCase.setUser();
   }
-
 }
