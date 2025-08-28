@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { UsersService } from '../users-service';
+import { Component, OnInit, signal } from '@angular/core';
+import { СamelCase } from '../camel-case';
 import { UserCard } from "../user-card/user-card";
-import { UsersApiService } from '../users-api-service';
+import { User } from './models/user';
+
+
 
 @Component({
   selector: 'app-users-list',
@@ -10,11 +12,12 @@ import { UsersApiService } from '../users-api-service';
   templateUrl: './users-list.html',
   styleUrl: './users-list.css'
 })
-export class UsersList {
- @Input() users!: any[];
+export class UsersList implements OnInit {
+ users = signal<User[]>
 
-  constructor(
-    private usersservice : UsersService,
-    private userapiservice: UsersApiService,
-  ){}
+  constructor(private camelCase: СamelCase) {}
+
+  ngOnInit(): void {
+    this.camelCase.setUser();
+  }
 }
