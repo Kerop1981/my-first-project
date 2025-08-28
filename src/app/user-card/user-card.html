@@ -1,6 +1,6 @@
-<div  *ngFor="let user of users">
- <label for="id">ID:{{user.id}}</label>
- <label for="name">ID:{{user.name}}</label>
- <label for="id">Email:{{user.email}}</label>
- <label for="id">Phone:{{user.Phone}}</label>
-</div>
+@for (user of users; track user.id) {
+    <h2>id: {{user.id}}</h2>
+    <h2>name: {{user.name}}</h2>
+    <h2>email: {{user.email}}</h2>
+    <h2>phone: {{user.Phone}}</h2>
+}

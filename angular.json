@@ -52,14 +52,15 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
+                "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "my-first-project:build:production"
             },
             "development": {
-              "buildTarget": "my-first-project:build:development"
+              "buildTarget": "my-first-project:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

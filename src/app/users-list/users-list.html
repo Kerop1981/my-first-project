@@ -1,1 +1,7 @@
-<user-card></user-card>
+@for (user of users; track user.id) {
+  <user-card 
+    [users]="users"
+  ></user-card>
+}
+
+
