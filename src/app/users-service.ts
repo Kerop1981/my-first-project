@@ -6,7 +6,7 @@ import { UsersApiService } from './users-api-service';
 @Injectable({
   providedIn: 'root'
 })
-export class СamelCase {
+export class UsersService {
    users = signal<User[]>([])
   
   constructor(private userapiservice:UsersApiService){}
@@ -16,8 +16,14 @@ export class СamelCase {
       this.users.set(users)
      });
   }
-  
  
+  deleteUser(id : number):void {
+   this.userapiservice.deleteUser(id).subscribe(() => {
+   this.users.update(users => users.filter(user => user.id !== id))
+   })
+   
+  
+  } 
 }
 
 

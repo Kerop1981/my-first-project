@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 import { User } from '../users-list/models/user';
 import { CommonModule } from '@angular/common';
 
@@ -10,8 +10,11 @@ import { CommonModule } from '@angular/common';
 })
 export class UserCard {
   user = input<User>();
-
+  @Output() delete = new EventEmitter<number>()
  
+  DeleteUser(): void{
+    this.delete.emit(this.user()?.id)
+  }
 }
 
 

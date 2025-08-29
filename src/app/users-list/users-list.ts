@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
-import { СamelCase } from '../camel-case';
+import { UsersService} from '../users-service';
 import { UserCard } from "../user-card/user-card";
 import { User } from './models/user';
 
@@ -13,11 +13,16 @@ import { User } from './models/user';
   styleUrl: './users-list.css'
 })
 export class UsersList implements OnInit {
- users = signal<User[]>
+ users = signal<User[]>([])
 
-  constructor(private camelCase: СamelCase) {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.camelCase.setUser();
+    this.usersService.setUser();
+   
+  }
+
+  deleteUser(id:number): void{
+ this.usersService.deleteUser(id)
   }
 }
