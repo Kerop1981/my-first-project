@@ -15,7 +15,7 @@ export class UsersApiService {
    return this.http.get<User[]>(`${environment.apiUrl}/users`)
   }
 
-  deleteUser(id: number): Observable<void>{
+   deleteUserById(id: number): Observable<void>{
     return this.http.delete<void>(`${this.http}/${id}`)
   }
 }

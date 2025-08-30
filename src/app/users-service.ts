@@ -9,16 +9,16 @@ import { UsersApiService } from './users-api-service';
 export class UsersService {
    users = signal<User[]>([])
   
-  constructor(private userapiservice:UsersApiService){}
+  constructor(private userApiService:UsersApiService){}
 
-  setUser(): void {
-     this.userapiservice.getUsers().subscribe(users => {
+  loadUsers(): void {
+     this.userApiService.getUsers().subscribe(users => {
       this.users.set(users)
      });
   }
  
-  deleteUser(id : number):void {
-   this.userapiservice.deleteUser(id).subscribe(() => {
+   deleteUserById(id : number):void {
+   this.userApiService.deleteUserById(id).subscribe(() => {
    this.users.update(users => users.filter(user => user.id !== id))
    })
    

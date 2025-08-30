@@ -1,7 +1,7 @@
 @for (user of users(); track user.id) {
   <user-card 
     [user]="user"
-    (delete)="deleteUser($event)"
+    (delete)="deleteUserId($event)"
   ></user-card>
 }
 

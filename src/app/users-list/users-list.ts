@@ -18,11 +18,11 @@ export class UsersList implements OnInit {
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.usersService.setUser();
+    this.usersService.loadUsers();
    
   }
 
-  deleteUser(id:number): void{
- this.usersService.deleteUser(id)
+  deleteUserId(id:number): void{
+ this.usersService. deleteUserById(id)
   }
 }
