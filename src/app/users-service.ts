@@ -1,6 +1,6 @@
 import { Injectable,  signal } from '@angular/core';
 import { User } from './users-list/models/user';
-import { Observable } from 'rxjs';
+
 import { UsersApiService } from './users-api-service';
 
 @Injectable({
