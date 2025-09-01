@@ -10,7 +10,7 @@ import { CreateEditUser } from '../create-edit-user/create-edit-user';
 
 @Component({
   selector: 'app-users-list',
-  imports: [CommonModule, UserCard, CreateEditUser],
+  imports: [CommonModule, UserCard],
   templateUrl: './users-list.html',
   styleUrl: './users-list.css'
 })
@@ -41,6 +41,20 @@ users = signal<User[]>([])
           ...result
         };
         this.usersService.addUser(newUser);
+      }
+    });
+  }
+
+  openRedactMatDialog(user:User){
+    const dialogRef = this.dialog.open(CreateEditUser, {
+      data: user
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.usersService.users.update(users =>
+          users.map(user => user.id === user.id ? {...user, ...result} : user)
+        )
       }
     });
   }

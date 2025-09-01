@@ -25,6 +25,10 @@ export class UsersService {
   addUser(user: User): void {
     this.users.update(users => [...users, user]);
   }
+
+  updateUser(update: User) : void {
+    this.users.update(users => users.map(users => users.id === update.id ? update : users))
+  }
 }
 
 

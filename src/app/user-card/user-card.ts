@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class UserCard {
   user = input<User>();
  delete = output<number>() 
+ edit = output<User>()
  
  
    deleteUserById(): void{
@@ -18,6 +19,11 @@ export class UserCard {
    if(userID != null){
     this.delete.emit(userID)
    }
+  }
+
+  editUser(): void {
+    const userValue = this.user()
+    if (userValue) this.edit.emit(userValue)
   }
 }
 
