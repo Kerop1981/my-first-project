@@ -14,9 +14,9 @@ export class UserCard {
  
  
    deleteUserById(): void{
-   const id =this.user()?.id
-   if(id != null){
-    this.delete.emit(id)
+   const userID = this.user()?.id
+   if(userID != null){
+    this.delete.emit(userID)
    }
   }
 }

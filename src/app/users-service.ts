@@ -6,23 +6,26 @@ import { UsersApiService } from './users-api-service';
   providedIn: 'root'
 })
 export class UsersService {
-   users = signal<User[]>([])
-  
-  constructor(private userApiService:UsersApiService){}
+    users = signal<User[]>([]);
+
+  constructor(private userApiService: UsersApiService) {}
 
   loadUsers(): void {
-     this.userApiService.getUsers().subscribe(users => {
-      this.users.set(users)
-     });
+    this.userApiService.getUsers().subscribe(users => {
+      this.users.set(users);
+    });
   }
- 
-   deleteUserById(id : number):void {
-   this.userApiService.deleteUserById(id).subscribe(() => {
-   this.users.update(users => users.filter(user => user.id !== id))
-   })
-   
-  
-  } 
+
+  deleteUserById(id: number): void {
+    this.userApiService.deleteUserById(id).subscribe(() => {
+      this.users.update(users => users.filter(user => user.id !== id));
+    });
+  }
+
+  addUser(user: User): void {
+    this.users.update(users => [...users, user]);
+  }
 }
+
 
 
