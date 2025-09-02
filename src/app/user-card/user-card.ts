@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class UserCard {
   user = input<User>();
- delete = output<number>() 
- edit = output<User>()
+ delete = output<number>(); 
+ edit = output<User>();
  
  
    deleteUserById(): void{

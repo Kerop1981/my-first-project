@@ -15,7 +15,7 @@ import { CreateEditUser } from '../create-edit-user/create-edit-user';
   styleUrl: './users-list.css'
 })
 export class UsersList implements OnInit {
-users = signal<User[]>([])
+ users = signal<User[]>([])
 
   constructor(
     private usersService: UsersService,
@@ -24,7 +24,7 @@ users = signal<User[]>([])
 
   ngOnInit(): void {
     this.usersService.loadUsers();
-    this.usersService.users;
+   this.users =  this.usersService.users;
   }
 
   deleteUserId(id: number): void {
@@ -37,7 +37,7 @@ users = signal<User[]>([])
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         const newUser: User = {
-          id: Date.now(), // фейковый id
+          id: Date.now(),
           ...result
         };
         this.usersService.addUser(newUser);
@@ -45,7 +45,7 @@ users = signal<User[]>([])
     });
   }
 
-  openRedactMatDialog(user:User){
+  openRedactMatDialog(user:User): void{
     const dialogRef = this.dialog.open(CreateEditUser, {
       data: user
     });
