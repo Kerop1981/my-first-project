@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogActions, MatDialogModule } from '@angular/mat
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'create-edit-user',
+  selector: 'user-form-dialog',
   imports: [
     MatDialogActions,
     MatFormFieldModule,
