@@ -9,6 +9,7 @@ import { environment } from './environment';
 })
 export class UsersApiService {
 
+
   constructor(private http : HttpClient){}
  
   getUsers():Observable<User[]> {
@@ -17,5 +18,13 @@ export class UsersApiService {
 
    deleteUserById(id: number): Observable<void>{
     return this.http.delete<void>(`${environment.apiUrl}/${id}`)
+  }
+
+  addUser(user:User):Observable<User>{
+    return this.http.post<User>(`${environment.apiUrl}`,user);
+  }
+
+  updateUser(user:User):Observable<User>{
+    return this.http.put<User>(`{environment.apiUrl}/${user.id}`,user)
   }
 }

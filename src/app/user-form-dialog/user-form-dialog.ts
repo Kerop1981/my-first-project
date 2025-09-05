@@ -11,12 +11,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatButtonModule,
-     MatDialogModule,
+    MatDialogModule,
   ],
-  templateUrl: './create-edit-user.html',
-  styleUrl: './create-edit-user.css'
+  templateUrl: './user-form-dialog.html',
+  styleUrl: './user-form-dialog.css'
 })
-export class CreateEditUser {
+export class UserFormDialog {
   form: FormGroup;
   isEdit = false;
 
@@ -30,7 +30,8 @@ export class CreateEditUser {
     });
 
     if (data) {
-      this.form.patchValue(data); 
+      this.form.patchValue(data);
+      this.isEdit = true; 
     }
   }
 }

@@ -5,10 +5,12 @@ import { UsersApiService } from './users-api-service';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class UsersService  {
     users = signal<User[]>([]);
 
-  constructor(private userApiService: UsersApiService) {}
+  constructor(private userApiService: UsersApiService) {
+    this.loadUsers();
+  }
 
   loadUsers(): void {
     this.userApiService.getUsers().subscribe(users => {
@@ -22,12 +24,18 @@ export class UsersService {
     });
   }
 
-  addUser(user: User): void {
-    this.users.update(users => [...users, user]);
+  addUser(user: User) {
+    this.userApiService.addUser(user).subscribe(newUser => {
+      this.users.update(users => [...users, newUser]);
+    });
   }
 
   updateUser(update: User) : void {
-    this.users.update(users => users.map(users => users.id === update.id ? update : users))
+      this.userApiService.updateUser(update).subscribe(updatedUser => {
+      this.users.update(users =>
+        users.map(u => u.id === updatedUser.id ? updatedUser : u)
+      );
+    });
   }
 }
 

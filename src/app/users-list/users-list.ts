@@ -4,7 +4,7 @@ import { UsersService} from '../users-service';
 import { UserCard } from "../user-card/user-card";
 import { User } from './models/user';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateEditUser } from '../create-edit-user/create-edit-user';
+import { UserFormDialog } from '../user-form-dialog/user-form-dialog';
 
 
 
@@ -32,7 +32,7 @@ export class UsersList implements OnInit {
   }
 
   openMatDialog(): void {
-    const dialogRef = this.dialog.open(CreateEditUser);
+    const dialogRef = this.dialog.open(UserFormDialog);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -45,17 +45,21 @@ export class UsersList implements OnInit {
     });
   }
 
-  openRedactMatDialog(user:User): void{
-    const dialogRef = this.dialog.open(CreateEditUser, {
-      data: user
-    });
+  
+  openRedactMatDialog(id:number): void{
+    const user = this.usersService.users().find(userId => userId.id === id) 
+     
+    if(!user) return;
+
+    const dialogRef = this.dialog.open(UserFormDialog, { data: user });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         this.usersService.users.update(users =>
           users.map(user => user.id === user.id ? {...user, ...result} : user)
-        )
+        );
       }
-    });
-  }
+  });
+  
+}
 }
