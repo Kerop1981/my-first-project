@@ -1,1 +1,13 @@
-<user-card></user-card>
+<button mat-raised-button color="primary" (click)="openMatDialog()">новый пользователь</button> 
+
+@for (user of users(); track user.id) {
+  <user-card 
+    [user]="user"
+    (delete)="deleteUserId($event)"
+    (edit)="openRedactMatDialog($event)"
+  ></user-card>
+
+
+}
+
+
