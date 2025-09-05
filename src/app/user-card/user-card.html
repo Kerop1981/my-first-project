@@ -1,6 +1,7 @@
-<div  *ngFor="let user of users">
- <label for="id">ID:{{user.id}}</label>
- <label for="name">ID:{{user.name}}</label>
- <label for="id">Email:{{user.email}}</label>
- <label for="id">Phone:{{user.Phone}}</label>
-</div>
+<h2>id: {{ user()?.id }}</h2>
+<h2>name: {{ user()?.name }}</h2>
+<h2>email: {{ user()?.email }}</h2>
+<button (click)="deleteUser()">Delete</button>
+<button (click)="editUser()">Edit</button>
+
+
